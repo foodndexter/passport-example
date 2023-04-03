@@ -1,9 +1,13 @@
-// import '@/styles/globals.css'
+import { store } from "@/core"
 import axios from "axios"
 import type { AppProps } from "next/app"
+import { Provider } from "react-redux"
 
 export default function App({ Component, pageProps }: AppProps) {
-  axios.defaults.baseURL = "http://localhost:3000/api"
-
-  return <Component {...pageProps} />
+  axios.defaults.baseURL = process.env.NEXT_PUBLIC_SERVER_URL
+  return (
+    <Provider store={store}>
+      <Component {...pageProps} />
+    </Provider>
+  )
 }

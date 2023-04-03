@@ -1,9 +1,12 @@
 import mongoose from "mongoose"
 
 export const RefreshTokenSchema = new mongoose.Schema({
-  refreshToken: {
+  email: {
     type: String,
     required: true,
+  },
+  password: {
+    type: String,
   },
   _id: {
     type: String,

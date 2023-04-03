@@ -4,10 +4,12 @@ const url = process.env.MONGO_URL!
 
 let cached: any = global
 
-if (!cached.mongoose) {
-  cached.mongoose = { conn: null, promise: null }
+cached = cached.mongoose
+if (!cached) {
+  cached = { conn: null, promise: null }
 }
-export default async () => {
+
+export default async function () {
   if (cached.conn) {
     return cached.conn
   }
